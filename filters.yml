@@ -10,6 +10,21 @@
         #msg: "{{ x | split(',') | first }}" for first value
         #msg: "{{ x | split(',') | last }}" for last value
 
+- name: Filters
+  hosts: localhost
+  connection: local
+  vars:
+    x: 1,2,3
+  tasks:
+    - name: Print first value of csv - x
+      ansible.builtin.debug:
+        msg: "{{ split[1] }}"
+      vars:
+        split: "{{ x | split(',')}}"
+
+
+
+
 
 - name: Install multiple packages
   hosts: all
