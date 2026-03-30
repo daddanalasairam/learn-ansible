@@ -1,0 +1,20 @@
+- name: Handlers
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Install zlib
+      ansible.builtin.dnf:
+        name: zlib
+        state: installed
+        notify:
+          - Say Hello
+
+#For suppose if we run below task by replacing the above task:
+#    - name: Install zlib
+#      ansible.builtin.shell: ls
+
+
+  handlers:
+    - name: Say hello
+      ansible.builtin.debug:
+        msg: Hello, I am notified
