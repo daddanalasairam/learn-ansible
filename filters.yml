@@ -1,0 +1,26 @@
+- name: Filters
+  hosts: localhost
+  connection: local
+  vars:
+    x: 1,2,3
+  tasks:
+    - name: Print first value of csv - x
+      ansible.builtin.debug:
+        msg: "{{ x | split(',')}}"
+        #msg: "{{ x | split(',') | first }}" for first value
+        #msg: "{{ x | split(',') | last }}" for last value
+
+
+- name: Install multiple packages
+  hosts: all
+  become: yes
+
+  vars:
+    packages: "nginx,mysql,redis"
+
+  tasks:
+    - name: Install packages
+      ansible.builtin.dnf:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ packages | split(',') }}"
