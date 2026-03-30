@@ -18,9 +18,8 @@
   tasks:
     - name: Print first value of csv - x
       ansible.builtin.debug:
-        msg: "{{ split[1] }}"
-      vars:
-        split: "{{ x | split(',')}}"
+        msg: "{{ x.split(',')[1] }}"
+
 
 
 
