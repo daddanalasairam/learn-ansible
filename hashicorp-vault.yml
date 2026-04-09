@@ -5,3 +5,5 @@
     - name: Print Password
       ansible.builtin.debug:
         msg: "{{ lookup('community.hashi_vault.hashi_vault', 'test/my_credentials:password token={{ vault_token }} url=https://<IP>:8200 validate_certs=False') }}"
+
+# Run the ansible by using vault : git pull ; ansible-playbook hashicorp-vault.yml -e vault_token=hvs.abc123xyz
