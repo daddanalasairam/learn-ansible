@@ -11,6 +11,6 @@
     - name: Start Nginx
       ansible.builtin.debug:
         msg: Started Nginx
-      tasks:
+      tags:
         - service
         - systemd
